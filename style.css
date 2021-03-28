@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: sans-serif;
+}
+
+nav {
+    background-color: #999;
+}
+
+nav ul {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 20px;
+}
+
+nav a:hover {
+    color: #333;
+}
+
+header {
+    /* 背景 */
+    background-image: url(https://source.unsplash.com/random/2000x200);
+    height: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* テキストレイアウト */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* テキスト */
+    font-size: 2em;
+    color: #fff;
+    text-shadow: #333 1px 1px 3px;
+    /* ボトム */
+    margin-bottom: 20px;
+}
+
+main {
+    margin-bottom: auto;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sections {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+section h1 {
+    text-align: center;
+}
+
+footer {
+    height: 100px;
+    background-color: #999;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* responsive */
+
+@media screen and (max-width: 800px) {
+    .sections {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* for IE11 */
+
+_:-ms-lang(x)::-ms-backdrop, .sections {
+    justify-content: space-around;
+}
