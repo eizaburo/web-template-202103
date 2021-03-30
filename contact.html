@@ -91,7 +91,7 @@
         });
 
         //クリックされたら
-        submit.addEventListener("click", (e) => {
+        submit.addEventListener("click", function (e) {
 
             //既存のSubmit動作を回避
             e.preventDefault();
@@ -115,10 +115,10 @@
 
                 //APIコール
                 fetch(final_url)
-                    .then((response) => {
+                    .then(function (response) {
                         alert("受付ました。");
                     })
-                    .catch((e) => {
+                    .catch(function (e) {
                         alert("接続エラーが発生しました。パラメータはemail=" + email.value + ",title=" + title.value + ",content=" + content.value + "です。")
                     })
             } else {
