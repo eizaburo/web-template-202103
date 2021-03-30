@@ -16,16 +16,15 @@ Web制作に必要な要素を散りばめてあるつもり。これをベー�
 * flex-boxレイアウト
 * IE11対応
 
-## 注意点
+## 完全に動作させるための注意点
 
-contact.html中のbase_urlを自身のGoogle Apps Script（API）のURLに変更する必要があります。
-セットアップ方法は[こちら](https://qiita.com/zaburo/private/a92ec920c83090f454a1)をご覧ください。
+### API側の実装
 
-## API側のコード
-
+完全に実行させるためにはcontact.html中のbase_urlを動作するAPIのURLに変更する必要があります。
 APIはPOSTにてemail, title, contentが処理できれば何でもいいですが、ここではGoogle Apps Script(GAS)で下記のコードが実装されていることを想定しています。
 コードは下記の通りです。スプレッドシートのコードエディタに記述します。
 パラメータを受け取りシート1に記録時間を追加して保存しています。
+セットアップ方法等については[こちら](https://qiita.com/zaburo/private/a92ec920c83090f454a1)をご覧ください。
 
 ```js
 //POST時処理
