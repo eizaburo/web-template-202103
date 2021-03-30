@@ -27,18 +27,18 @@
                 <form>
                     <div>
                         <label for="email">Email</label>
-                        <input id="email" type="text" name="email">
+                        <input id="email" type="text">
                     </div>
                     <div>
                         <label for="title">タイトル</label>
-                        <input id="title" type="text" name="title">
+                        <input id="title" type="text">
                     </div>
                     <div>
                         <label for="content">お問合せ内容</label>
-                        <textarea rows=3 id="content" name="content"></textarea>
+                        <textarea rows=5 id="content"></textarea>
                     </div>
                     <div>
-                        <button>送信</button>
+                        <button id="submit">送信</button>
                     </div>
                 </form>
             </div>
@@ -47,6 +47,36 @@
     <footer>
         footer
     </footer>
+    <script>
+
+        //Google Apps Script(API)
+        const base_url = "https://script.google.com/macros/s/AKfycbwFcO59Lll7vrH9x1dm1Lt37adnCDalIWvo0hkCky-BfXWh3SlejZ_l0D1AZssEOL8fkw/exec";
+
+        //要素取得
+        const email = document.getElementById("email");
+        const title = document.getElementById("title");
+        const submit = document.getElementById("submit");
+
+        //クリックされたら
+        submit.addEventListener("click", (e) => {
+
+            //既存のSubmit動作を回避
+            e.preventDefault();
+
+            //URL確認
+            const final_url = base_url + "?email=" + email.value + "&title=" + title.value + "&content=" + content.value;
+            console.log(final_url);
+
+            //APIコール
+            fetch(final_url)
+                .then((response) => {
+                    alert("受付ました。");
+                })
+                .catch((e) => {
+                    alert("何かしらのエラーが発生しました。")
+                })
+        })
+    </script>
 </body>
 
 </html>
