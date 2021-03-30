@@ -53,7 +53,8 @@
     <script>
 
         //API URL
-        const base_url = "https://script.google.com/macros/s/{YOUR_DEPLOY_ID}/exec";
+        // const base_url = "https://script.google.com/macros/s/{YOUR_DEPLOY_ID}/exec";
+        const base_url = "https://script.google.com/macros/s/AKfycbx7tbY1XMVUaK3pdHqvcBLDisIX1k3MvTLLpj9hjSaUuU2vZsJqnp6yy74vylnzTCnvRg/exec";
 
         //要素取得
         const email = document.getElementById("email");
@@ -119,11 +120,15 @@
                 fetch(final_url, {
                     mode: "no-cors",
                     method: "post",
-                    data: { email: email.value, title: title.value, content: content.value }
+                    data: { email: email.value, title: title.value, content: content.value },
                 })
                     .then(function (response) {
-                        console.log(response);
-                        alert("受付ました。");
+                        //no-cors時の正常レスポンス判断
+                        if (response.type == "opaque") {
+                            alert("お問合せを受付ました。");
+                        } else {
+                            alert("処理に失敗しました。");
+                        }
                     })
                     .catch(function (e) {
                         alert("接続エラーが発生しました。パラメータはemail=" + email.value + ",title=" + title.value + ",content=" + content.value + "です。")
