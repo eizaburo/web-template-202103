@@ -97,7 +97,7 @@ _:-ms-lang(x)::-ms-backdrop, .sections {
 
 /* About */
 
-.profile{
+.profile {
     width: 70%;
 }
 
@@ -120,11 +120,11 @@ td {
 }
 
 @media screen and (max-width: 800px) {
-    .profile{
+    .profile {
         width: 90%;
         font-size: 0.7em;
     }
-    .map{
+    .map {
         width: 90%;
     }
 }
@@ -133,6 +133,7 @@ td {
 
 .inquiry {
     width: 70%;
+    margin-bottom: 30px;
 }
 
 label {
@@ -150,22 +151,33 @@ input[type="text"] {
     border-radius: 5px;
 }
 
-textarea{
+textarea {
     width: 100%;
     box-sizing: border-box;
     padding: 10px;
     border: #aaa 1px solid;
     border-radius: 5px;
     resize: none;
+    /* 下部のマージン削除 */
+    display: block;
 }
 
-button{
+button {
     margin-top: 20px;
     padding: 10px 30px;
 }
 
+.error {
+    font-size: small;
+    color: #f00;
+}
+
+.hidden {
+    display: none;
+}
+
 @media screen and (max-width: 800px) {
-    .inquiry{
+    .inquiry {
         width: 90%;
     }
 }

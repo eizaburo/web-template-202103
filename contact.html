@@ -28,14 +28,17 @@
                     <div>
                         <label for="email">Email</label>
                         <input id="email" type="text">
+                        <span id="email-error" class="error hidden">Emailは必須かつEmailの形式である必要があります。</span>
                     </div>
                     <div>
                         <label for="title">タイトル</label>
                         <input id="title" type="text">
+                        <span id="title-error" class="error hidden">タイトルは必須かつ10文字以下である必要があります。</span>
                     </div>
                     <div>
                         <label for="content">お問合せ内容</label>
                         <textarea rows=5 id="content"></textarea>
+                        <span id="content-error" class="error hidden">お問合せ内容は必須かつ10文字以下である必要があります。</span>
                     </div>
                     <div>
                         <button id="submit">送信</button>
@@ -49,7 +52,7 @@
     </footer>
     <script>
 
-        //Google Apps Script(API)
+        //API URL
         const base_url = "https://script.google.com/macros/s/{YOUR_DEPLOY_ID}/exec";
 
         //要素取得
@@ -57,24 +60,72 @@
         const title = document.getElementById("title");
         const submit = document.getElementById("submit");
 
+        //error message
+        const email_error = document.getElementById("email-error");
+        const title_error = document.getElementById("title-error");
+        const content_error = document.getElementById("content-error");
+
+        //入力チェック条件
+        emailExp = /^[a-z]+@[a-z]+\.[a-z]+$/;
+        titleExp = /^.{1,10}$/;
+        contentExp = /^.{1,10}$/;
+
+        //入力されたら表示されているエラーメッセージ削除
+        //email
+        email.addEventListener("keyup", function (e) {
+            if (emailExp.test(email.value)) {
+                email_error.classList.add("hidden");
+            }
+        });
+        //title
+        title.addEventListener("keyup", function (e) {
+            if (titleExp.test(title.value)) {
+                title_error.classList.add("hidden");
+            }
+        });
+        //content
+        content.addEventListener("keyup", function (e) {
+            if (contentExp.test(content.value)) {
+                content_error.classList.add("hidden");
+            }
+        });
+
         //クリックされたら
         submit.addEventListener("click", (e) => {
 
             //既存のSubmit動作を回避
             e.preventDefault();
 
-            //URL確認
-            const final_url = base_url + "?email=" + email.value + "&title=" + title.value + "&content=" + content.value;
-            console.log(final_url);
+            //条件を満たしていなければエラー表示
+            if (!emailExp.test(email.value)) email_error.classList.remove("hidden");
+            if (!titleExp.test(title.value)) title_error.classList.remove("hidden");
+            if (!contentExp.test(content.value)) content_error.classList.remove("hidden");
 
-            //APIコール
-            fetch(final_url)
-                .then((response) => {
-                    alert("受付ました。");
-                })
-                .catch((e) => {
-                    alert("接続エラーが発生しました。パラメータはemail=" + email.value + ",title="+title.value+",content="+content.value+"です。")
-                })
+            //エラーがあるかチェック
+            if (email_error.classList.contains("hidden") &&
+                title_error.classList.contains("hidden") &&
+                content_error.classList.contains("hidden")
+            ) {
+
+                //エラーなしの場合
+
+                //URL確認
+                const final_url = base_url + "?email=" + email.value + "&title=" + title.value + "&content=" + content.value;
+                console.log(final_url);
+
+                //APIコール
+                fetch(final_url)
+                    .then((response) => {
+                        alert("受付ました。");
+                    })
+                    .catch((e) => {
+                        alert("接続エラーが発生しました。パラメータはemail=" + email.value + ",title=" + title.value + ",content=" + content.value + "です。")
+                    })
+            } else {
+                //エラーありの場合
+                console.log("どこかにエラーがあるようです。");
+            }
+
         })
     </script>
 </body>
