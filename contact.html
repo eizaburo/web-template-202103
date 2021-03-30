@@ -122,16 +122,12 @@
                     data: { email: email.value, title: title.value, content: content.value },
                 })
                     .then(function (response) {
-                        //no-cors時の正常レスポンス判断
-                        if (response.type == "opaque") {
-                            alert("お問合せを受付ました。");
-                        } else {
-                            alert("処理に失敗しました。");
-                        }
+                        alert("お問合せを受け付けました（たぶん）。");
                     })
                     .catch(function (e) {
-                        alert("接続エラーが発生しました。パラメータはemail=" + email.value + ",title=" + title.value + ",content=" + content.value + "です。")
-                    })
+                        alert("接続エラーが発生しました。")
+                    });
+
             } else {
                 //エラーありの場合
                 console.log("どこかにエラーがあるようです。");
