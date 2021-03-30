@@ -146,12 +146,17 @@ input[type="text"] {
     padding: 10px;
     /* font-size: 1em; */
     box-sizing: border-box;
+    border: #aaa 1px solid;
+    border-radius: 5px;
 }
 
 textarea{
     width: 100%;
     box-sizing: border-box;
     padding: 10px;
+    border: #aaa 1px solid;
+    border-radius: 5px;
+    resize: none;
 }
 
 button{
