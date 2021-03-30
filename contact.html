@@ -116,8 +116,13 @@
                 console.log(final_url);
 
                 //APIコール
-                fetch(final_url)
+                fetch(final_url, {
+                    mode: "no-cors",
+                    method: "post",
+                    data: { email: email.value, title: title.value, content: content.value }
+                })
                     .then(function (response) {
+                        console.log(response);
                         alert("受付ました。");
                     })
                     .catch(function (e) {
