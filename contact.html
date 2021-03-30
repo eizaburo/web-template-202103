@@ -117,11 +117,13 @@
 
                 //APIコール
                 fetch(final_url, {
-                    mode: "no-cors",
+                    mode: "no-cors", //APIコール自体はできるがいろいろ影響する（レスポンスは何も利用できない）
                     method: "post",
                     data: { email: email.value, title: title.value, content: content.value },
                 })
                     .then(function (response) {
+                        //mode:"no-cors"に設定すると意味のあるレスポンスは何も取れないので無条件にOKとする。
+                        console.log(response)
                         alert("お問合せを受け付けました（たぶん）。");
                     })
                     .catch(function (e) {
