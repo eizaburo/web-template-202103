@@ -1,0 +1,1 @@
+var base_url = "https://script.google.com/macros/s/{deploy_id}/exec";
