@@ -50,10 +50,11 @@
     <footer>
         footer
     </footer>
+    <script src="./api_url.js"></script>
     <script>
 
         //API URL
-        const base_url = "https://script.google.com/macros/s/{YOUR_DEPLOY_ID}/exec";
+        // const base_url = "https://script.google.com/macros/s/{YOUR_DEPLOY_ID}/exec";
 
         //要素取得
         const email = document.getElementById("email");
@@ -112,22 +113,22 @@
                 //エラーなしの場合
 
                 //URL確認
-                const final_url = base_url + "?email=" + email.value + "&title=" + title.value + "&content=" + content.value;
-                console.log(final_url);
+                const query_url = base_url + `?email=${email.value}&title=${title.value}&content=${content.value}`;
+                console.log(query_url);
 
                 //APIコール
-                fetch(final_url, {
-                    mode: "no-cors", //APIコール自体はできるがいろいろ影響する（レスポンスは何も利用できない）
-                    method: "post",
-                    data: { email: email.value, title: title.value, content: content.value },
+                fetch(base_url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: encodeURI(`email=${email.value}&title=${title.value}&content=${content.value}`),
                 })
                     .then(function (response) {
-                        //mode:"no-cors"に設定すると意味のあるレスポンスは何も取れないので無条件にOKとする。
-                        console.log(response)
                         alert("お問合せを受け付けました（たぶん）。");
                     })
-                    .catch(function (e) {
-                        alert("サーバとの通信エラーが発生しました。")
+                    .catch(function (error) {
+                        alert("通信エラーが発生しました。")
                     });
 
             } else {
