@@ -5,7 +5,7 @@ Web制作に必要な要素を散りばめてあるつもり。これをベー�
 
 ## 完成イメージ
 
-画像はunsplashからAPIで取得してるため随時変わります。[GitHub Pagesでも動きます](https://github.com/eizaburo/web-template-202103)が、api_url.jsの設定がないためフォームのAPIコールは失敗します。
+画像はunsplashからAPIで取得してるため随時変わります。[GitHub Pagesでも動きます](https://eizaburo.github.io/web-template-202103/index.html)が、api_url.jsの設定がないためフォームのAPIコールは失敗します。
 
 ![image](./images/readme_img002.png)
 
