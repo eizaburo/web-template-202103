@@ -123,11 +123,17 @@
                         "Content-Type": "application/x-www-form-urlencoded"
                     },
                     body: encodeURI(`email=${email.value}&title=${title.value}&content=${content.value}`),
-                    redirect:"follow"
+                    redirect: "follow"
                 })
                     .then(function (response) {
-                        alert("お問合せを受け付けました（たぶん）。");
-                        console.log(response);
+                        response.text()
+                            .then((text) => {
+                                //書込み成功
+                                alert(text);
+                            })
+                            .catch((error) => {
+                                cosole.log(error);
+                            })
                     })
                     .catch(function (error) {
                         alert("通信エラーが発生しました。")
