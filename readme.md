@@ -5,7 +5,7 @@ Web制作に必要な要素を散りばめてあるつもり。これをベー�
 
 ## 完成イメージ
 
-画像はunsplashからAPIで取得してるため随時変わります。
+画像はunsplashからAPIで取得してるため随時変わります。[GitHub Pagesでも動きます](https://github.com/eizaburo/web-template-202103)が、api_url.jsの設定がないためフォームのAPIコールは失敗します。
 
 ![image](./images/readme_img002.png)
 
@@ -49,6 +49,10 @@ function doPost(e) {
 ```
 
 >エラー処理などは一切していません。
+
+### api_url.jsの作成
+
+api_url_sample.jsを参考にapi_url.jsを同じディレクトリ内に作成し、上記で作成したAPIのURLをコピーする必要があります。
 
 ## 既知の問題
 
