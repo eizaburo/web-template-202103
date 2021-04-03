@@ -114,7 +114,7 @@
 
                 //URL確認
                 const query_url = base_url + `?email=${email.value}&title=${title.value}&content=${content.value}`;
-                console.log(query_url);
+                // console.log(query_url);
 
                 //APIコール
                 fetch(base_url, {
@@ -123,9 +123,11 @@
                         "Content-Type": "application/x-www-form-urlencoded"
                     },
                     body: encodeURI(`email=${email.value}&title=${title.value}&content=${content.value}`),
+                    redirect:"follow"
                 })
                     .then(function (response) {
                         alert("お問合せを受け付けました（たぶん）。");
+                        console.log(response);
                     })
                     .catch(function (error) {
                         alert("通信エラーが発生しました。")
