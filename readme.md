@@ -43,7 +43,7 @@ function doPost(e) {
   sheet.appendRow([email, title, content, new Date()]);
 
   //response
-  ContentService.createTextOutput("success");
+  return ContentService.createTextOutput("success");
 
 }
 ```
